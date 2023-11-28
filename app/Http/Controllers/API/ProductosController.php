@@ -14,11 +14,31 @@ class ProductosController extends Controller
         try {
 
             $data = Productos::get();
-            //return redirect()->away('https://www.google.com');
             return response()->json($data, 200);
         } catch (\Throwable $th) {
 
             return response()->json(['error' => $th->getMessage(), 500]);
         }
     }
+
+    public function create(Request $request){
+
+        try{
+            $data['codigo']=$request['codigo'];
+            $data['descripcion']=$request['descripcion'];
+            $data['codigo_barras']=$request['codigo_barras'];
+            $data['referencia']=$request['referencia'];
+            $data['grupo']=$request['grupo'];
+            $data['vr_ult_costo']=$request['vr_ult_costo'];
+            $data['vr_precio']=$request['vr_precio'];
+            $data['ult_compra']=$request['ult_compra'];
+            $data['ult_venta']=$request['ult_venta'];
+            $res=Productos::create($data);
+            return response()->json($res,200);
+
+        } catch (\Throwable $th) {
+            return response()->json(['error' => $th->getMessage(),500]) ;
+    }
+
+}
 }
