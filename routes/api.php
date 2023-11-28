@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\API\ProductosController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\ProductosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,14 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::prefix('v1/productos')->group(function () {
-
-    Route::get('/',[ ProductosController::class, 'get']);
-    /*Route::get('/{id}',[ PersonaController::class, 'getById']);
-    Route::post('/',[ PersonaController::class, 'create']);
-    Route::put('/{id}',[ PersonaController::class, 'update']);
-    Route::delete('/{id}',[ PersonaController::class, 'delete']);
-    */
+Route::prefix('productos')->group(function () {
+    Route::get('/',[ProductosController::class, 'get']);
 
  });
-
