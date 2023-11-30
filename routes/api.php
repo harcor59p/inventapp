@@ -20,8 +20,8 @@ use App\Http\Controllers\API\ProductosController;
     return $request->user();
 }); */
 
-Route::post('signup',[AuthController::class,'signup']);
-Route::post('login',[AuthController::class,'login']);
+Route::post('/signup',[AuthController::class,'signup']);
+Route::post('/login',[AuthController::class,'login']);
 
 Route::prefix('productos')->group(function () {
     Route::get('/',[ProductosController::class, 'get']);
