@@ -17,6 +17,9 @@ class CreateTransaccionesTable extends Migration
             $table->id();
             $table->string('codigo',5);
             $table->integer('consecutivo');
+            $table->date('fecha');
+            $table->integer('anio');
+            $table->integer('mes');
             $table->string('producto',10);
             $table->integer('cantidad');
             $table->string('bodega',3);
