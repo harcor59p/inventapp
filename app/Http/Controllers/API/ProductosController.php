@@ -21,39 +21,63 @@ class ProductosController extends Controller
         }
     }
 
-    public function create(Request $request){
+    public function create(Request $request)
+    {
 
-        try{
-            $data['codigo']=$request['codigo'];
-            $data['descripcion']=$request['descripcion'];
-            $data['codigo_barras']=$request['codigo_barras'];
-            $data['referencia']=$request['referencia'];
-            $data['grupo']=$request['grupo'];
-            $data['vr_ult_costo']=$request['vr_ult_costo'];
-            $data['vr_precio']=$request['vr_precio'];
-            $data['ult_compra']=$request['ult_compra'];
-            $data['ult_venta']=$request['ult_venta'];
-            $res=Productos::create($data);
-            return response()->json($res,200);
-
+        try {
+            $data['codigo'] = $request['codigo'];
+            $data['descripcion'] = $request['descripcion'];
+            $data['codigo_barras'] = $request['codigo_barras'];
+            $data['referencia'] = $request['referencia'];
+            $data['grupo'] = $request['grupo'];
+            $data['vr_ult_costo'] = $request['vr_ult_costo'];
+            $data['vr_precio'] = $request['vr_precio'];
+            $data['ult_compra'] = $request['ult_compra'];
+            $data['ult_venta'] = $request['ult_venta'];
+            $res = Productos::create($data);
+            return response()->json($res, 200);
         } catch (\Throwable $th) {
-            return response()->json(['error' => $th->getMessage(),500]) ;
+            return response()->json(['error' => $th->getMessage(), 500]);
+        }
     }
 
-
-
-}
-
-public function getById($id)
+    public function getById($id)
     {
-        try{
+        try {
 
-            $data=Productos::find($id);
-            return response()->json($data,200);
-
-
-        }catch (\Throwable $th) {
-            return response()->json(['error' => $th->getMessage(),500]) ;
+            $data = Productos::find($id);
+            return response()->json($data, 200);
+        } catch (\Throwable $th) {
+            return response()->json(['error' => $th->getMessage(), 500]);
         }
+    }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $data['codigo'] = $request['codigo'];
+            $data['descripcion'] = $request['descripcion'];
+            $data['codigo_barras'] = $request['codigo_barras'];
+            $data['referencia'] = $request['referencia'];
+            $data['grupo'] = $request['grupo'];
+            $data['vr_ult_costo'] = $request['vr_ult_costo'];
+            $data['vr_precio'] = $request['vr_precio'];
+            $data['ult_compra'] = $request['ult_compra'];
+            $data['ult_venta'] = $request['ult_venta'];
+            Productos::find($id)->update($data);
+            $res = Productos::find($id);
+            return response()->json($res, 200);
+        } catch (\Throwable $th) {
+            return response()->json(['error' => $th->getMessage(), 500]);
         }
+    }
+    public function delete($id)
+    {
+        try {
+            $res = Productos::find($id)->delete();
+            return response()->json(['Registro Eliminado' => $res], 200);
+        } catch (\Throwable $th) {
+            return response()->json(['error' => $th->getMessage(), 500]);
+        }
+    }
 }

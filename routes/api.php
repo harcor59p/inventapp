@@ -20,12 +20,13 @@ use App\Http\Controllers\API\ProductosController;
     return $request->user();
 }); */
 
-Route::post('/signup',[AuthController::class,'signup']);
-Route::post('/login',[AuthController::class,'login']);
+Route::post('/signup', [AuthController::class, 'signup']);
+Route::post('/login', [AuthController::class, 'login']);
 
 Route::prefix('productos')->group(function () {
-    Route::get('/',[ProductosController::class, 'get']);
-    Route::post('/',[ProductosController::class, 'create']);
-    Route::get('/{id}',[PersonaController::class, 'getById']);
-
- });
+    Route::get('/', [ProductosController::class, 'get']);
+    Route::get('/{id}', [ProductosController::class, 'getById']);
+    Route::put('/{id}', [ProductosController::class, 'update']);
+    Route::delete('/{id}', [ProductosController::class, 'delete']);
+    Route::post('/', [ProductosController::class, 'create']);
+});
