@@ -11,6 +11,9 @@ class Transacciones extends Model
 
     protected $fillable = [
         'bodega',
+        'fecha',
+        'anio',
+        'mes',
         'cantidad',
         'codigo',
         'consecutivo',

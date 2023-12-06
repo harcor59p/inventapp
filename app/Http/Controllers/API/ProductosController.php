@@ -40,5 +40,20 @@ class ProductosController extends Controller
             return response()->json(['error' => $th->getMessage(),500]) ;
     }
 
+
+
 }
+
+public function getById($id)
+    {
+        try{
+
+            $data=Productos::find($id);
+            return response()->json($data,200);
+
+
+        }catch (\Throwable $th) {
+            return response()->json(['error' => $th->getMessage(),500]) ;
+        }
+        }
 }
