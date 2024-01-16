@@ -31,13 +31,12 @@ return [
 
     // 'supports_credentials' => false,
 
-    'paths' => ['api/*','api/v1/', 'sanctum/csrf-cookie'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
         'api/*',
-        'api/v1',
         'http://localhost:4200/',
         '*'
     ],
