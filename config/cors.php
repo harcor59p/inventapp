@@ -37,7 +37,7 @@ return [
 
     'allowed_origins' => [
         'api/*',
-        'http://localhost:4200/',
+        //'http://localhost:4200/',
         '*'
     ],
 
